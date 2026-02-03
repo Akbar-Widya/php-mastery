@@ -1,40 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare(stric_types=1);
 
 namespace App\Core;
 
-interface Authorizable
+interface Billable
 {
-    public function canAccess(): bool;
-}
-interface Loggable
-{
-    public function getLogMessage(): string;
+    public function getPrice(): float;
 }
 
-class SecurityManager
+interface Emailable
 {
-    /**
-     * Union Types (|): Accepts multiple different types.
-     */
-    public function findUser(int|string $id): void {}
+    public function getEmailAddress(): string;
+}
 
-    /**
-     * Intersection Types (&): Must satisfy ALL listed interfaces/classes.
-     */
-    public function audit(Authorizable&Loggable $subject): void
+class User implements Billable, Emailable
+{
+    public function getPrice(): float
     {
-        if ($subject->canAccess()) {
-            error_log($subject->getLogMessage());
-        }
+        return 99.00;
     }
 
-    /**
-     * DNF (Disjunctive Normal Form) Types: Allows Intersections within Unions.
-     */
-    public function process((Authorizable&Loggable) | null $user): void
+    public function getEmailAddress(): string
     {
-        $user?->canAccess();
+        return "dev@example.com";
     }
 }
+?>
