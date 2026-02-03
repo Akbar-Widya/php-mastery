@@ -2,28 +2,26 @@
 
 declare(stric_types=1);
 
-namespace App\Core;
+/**
+ * Technical Increment: Primitives
+ * No Classes, No Interfaces. Just data.
+*/
 
-interface Billable
-{
-    public function getPrice(): float;
-}
+// 1. String: text
+$tool = "PHP 8.4";
 
-interface Emailable
-{
-    public function getEmailAddress(): string;
-}
+// 2. Integer: whole number
+$quantity = 5;
 
-class User implements Billable, Emailable
-{
-    public function getPrice(): float
-    {
-        return 99.00;
-    }
+// 3. Float: decimal
+$price = 19.99;
 
-    public function getEmailAddress(): string
-    {
-        return "dev@example.com";
-    }
-}
+// 4. Boolean: true or false
+$isReady = true;
+
+// 5. Basic Math
+$total = $quantity * $price;
+
+echo "Learning " . $tool . "\n";
+echo "Total Price: " . $total;
 ?>
