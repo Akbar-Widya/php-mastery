@@ -2,21 +2,23 @@
 
 declare(strict_types=1);
 
-// 1. Numerical Operations
-$basePrice = 100;
-$taxAmount = 15;
-$quantity = 4;
-$totalPrice = $basePrice + $taxAmount; // Addition
+$quantity = 6;
+$unitPrice = 20.00;
+$total = $quantity * $unitPrice;
 
-$discount = 10;
-$finalPrice = $totalPrice - $discount; // Subtraction
-$grandTotal = $finalPrice * $quantity; // Multiplication
+/**
+ * If Statement:
+ * Condition: goes in parentheses.
+ * Code to run: goes in curly braces.
+ */
 
-// 2. String Operations; The Dot Operator
-// In PHP, we use a period (.) to glue text together.
-$greeting = "Total Amount Due: ";
-$message = $greeting . "$" . $grandTotal; 
+if ($quantity > 5) {
+    echo "Bulk discount applied!\n";
+    $total = $total * 0.90;
+} else {
+    echo "Standard pricing applied.\n";
+}
 
-echo $message;
+echo "Final Total: $" . $total;
 
 ?>
